@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -11,6 +11,7 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private Texture2D _rectangleTexture;
     private SpriteFont _font;
+    private ISceneManager _sceneManager;
 
     public Game1()
     {
@@ -21,7 +22,13 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        _sceneManager = new SceneManager();
+        
+        // Create initial scene
+        var mainScene = _sceneManager.CreateScene("MainScene");
+        // TODO: Add game objects to the scene
+
+        _sceneManager.LoadScene("MainScene");
 
         base.Initialize();
     }
@@ -40,7 +47,8 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
-        // TODO: Add your update logic here
+        var activeScene = _sceneManager.GetActiveScene();
+        // TODO: Update game objects in the active scene
 
         base.Update(gameTime);
     }
