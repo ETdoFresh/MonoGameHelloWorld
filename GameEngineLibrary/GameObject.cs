@@ -75,7 +75,7 @@ namespace GameEngineLibrary
             _components.Add(component);
         }
 
-        public T GetComponent<T>() where T : IComponent
+        public T? GetComponent<T>() where T : IComponent
         {
             foreach (var component in _components)
             {

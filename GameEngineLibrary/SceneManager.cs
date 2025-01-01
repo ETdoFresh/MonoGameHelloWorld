@@ -6,11 +6,11 @@ namespace GameEngineLibrary
     public class SceneManager : ISceneManager
     {
         private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
-        private Scene _activeScene;
+        private Scene? _activeScene = null;
         private int _nextBuildIndex = 0;
 
         public int SceneCount => _scenes.Count;
-        public event Action<Scene> SceneLoaded;
+        public event Action<Scene>? SceneLoaded = null;
 
         public void LoadScene(string sceneName)
         {
@@ -39,7 +39,7 @@ namespace GameEngineLibrary
             throw new ArgumentException($"Scene with build index {sceneBuildIndex} not found");
         }
 
-        public Scene GetActiveScene()
+        public Scene? GetActiveScene()
         {
             return _activeScene;
         }
