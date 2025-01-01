@@ -27,5 +27,23 @@ namespace GameEngineLibrary
         {
             _gameObjects.Remove(gameObject);
         }
+
+        public void Destroy()
+        {
+            foreach (var gameObject in _gameObjects)
+            {
+                gameObject.Destroy();
+            }
+            _gameObjects.Clear();
+            IsLoaded = false;
+        }
+
+        public void Update(float deltaTime)
+        {
+            foreach (var gameObject in _gameObjects)
+            {
+                gameObject.Update(deltaTime);
+            }
+        }
     }
 }

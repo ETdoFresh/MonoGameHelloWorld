@@ -1,6 +1,7 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using GameEngineLibrary;
 using System;
 
 namespace MonoGameHelloWorld;
@@ -11,7 +12,7 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private Texture2D _rectangleTexture;
     private SpriteFont _font;
-    private ISceneManager _sceneManager;
+    private SceneManager _sceneManager;
 
     public Game1()
     {
@@ -66,9 +67,4 @@ public class Game1 : Game
         base.Draw(gameTime);
     }
 
-    protected override void OnExiting(object sender, ExitingEventArgs args)
-    {
-        Console.WriteLine("Game closed via window close button!");
-        base.OnExiting(sender, args);
-    }
 }

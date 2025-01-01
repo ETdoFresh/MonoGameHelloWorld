@@ -50,5 +50,19 @@ namespace GameEngineLibrary
             _scenes[name] = scene;
             return scene;
         }
+
+        public void UnloadCurrentScene()
+        {
+            if (_activeScene != null)
+            {
+                _activeScene.Destroy();
+                _activeScene = null;
+            }
+        }
+
+        public void Update(float deltaTime)
+        {
+            _activeScene?.Update(deltaTime);
+        }
     }
 }
