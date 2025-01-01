@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,6 +8,7 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private Texture2D _rectangleTexture;
 
     public Game1()
     {
@@ -26,8 +27,12 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        // TODO: use this.Content to load your game content here
+        
+        // Create a 100x100 white rectangle texture
+        _rectangleTexture = new Texture2D(GraphicsDevice, 100, 100);
+        Color[] data = new Color[100 * 100];
+        for (int i = 0; i < data.Length; i++) data[i] = Color.White;
+        _rectangleTexture.SetData(data);
     }
 
     protected override void Update(GameTime gameTime)
@@ -44,7 +49,10 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+        // Draw rectangle at position (200, 150)
+        _spriteBatch.Draw(_rectangleTexture, new Vector2(200, 150), Color.Red);
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
