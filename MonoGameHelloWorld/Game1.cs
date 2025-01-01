@@ -1,6 +1,7 @@
-﻿﻿using Microsoft.Xna.Framework;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace MonoGameHelloWorld;
 
@@ -37,9 +38,6 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
         // TODO: Add your update logic here
 
         base.Update(gameTime);
@@ -55,5 +53,11 @@ public class Game1 : Game
         _spriteBatch.End();
 
         base.Draw(gameTime);
+    }
+
+    protected override void OnExiting(object sender, ExitingEventArgs args)
+    {
+        Console.WriteLine("Game closed via window close button!");
+        base.OnExiting(sender, args);
     }
 }
