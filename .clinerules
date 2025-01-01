@@ -1,3 +1,8 @@
 <custom_rules>
-  <custom_rule>If .cs code is changed, run dotnet build to ensure no errors have been introduced</custom_rule>
+  <custom_rule>
+    <name>Build on .cs change</name>
+    <description>Build the project when a .cs file is changed</description>
+    <trigger>Before Task Completion</trigger>
+    <command>dotnet build</command>
+  </custom_rule>
 </custom_rules>
