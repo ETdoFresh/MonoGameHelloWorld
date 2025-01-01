@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -10,6 +10,7 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Texture2D _rectangleTexture;
+    private SpriteFont _font;
 
     public Game1()
     {
@@ -34,6 +35,7 @@ public class Game1 : Game
         Color[] data = new Color[100 * 100];
         for (int i = 0; i < data.Length; i++) data[i] = Color.White;
         _rectangleTexture.SetData(data);
+        _font = Content.Load<SpriteFont>("MyFont");
     }
 
     protected override void Update(GameTime gameTime)
@@ -50,6 +52,7 @@ public class Game1 : Game
         _spriteBatch.Begin();
         // Draw rectangle at position (200, 150)
         _spriteBatch.Draw(_rectangleTexture, new Vector2(200, 150), Color.Red);
+        _spriteBatch.DrawString(_font, "Hello World", new Vector2(100, 100), Color.White);
         _spriteBatch.End();
 
         base.Draw(gameTime);
