@@ -1,4 +1,4 @@
-﻿﻿using Microsoft.Xna.Framework;
+﻿﻿﻿﻿﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using GameEngineLibrary;
@@ -19,6 +19,12 @@ public class Game1 : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+    }
+
+    protected override void OnExiting(object sender, Microsoft.Xna.Framework.ExitingEventArgs args)
+    {
+        Console.WriteLine("Game successfully quit");
+        base.OnExiting(sender, args);
     }
 
     protected override void Initialize()
